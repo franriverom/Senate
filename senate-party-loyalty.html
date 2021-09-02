@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
+        rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" 
+        crossorigin="anonymous">
+    <title>HOME</title>
+    </head>
+    <body id="senate">
+        <div class="wrapper-index">
+            <header class="header-cont">
+                <a class="email" href="mailto:info@tgif.net" target="_blank">✉️info@tgif.net</a>
+            </header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                     Congress 113
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="senate-data.html">Senate</a></li>
+                                    <li><a class="dropdown-item" href="house-data.html">House</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                     Attendance
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="attendance-senate.html">Senate</a></li>
+                                    <li><a class="dropdown-item" href="attendance-house.html">House</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                     Party Loyalty
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="senate-party-loyalty.html">Senate</a></li>
+                                    <li><a class="dropdown-item" href="house-party-loyalty.html">House</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <main id="members-data" class="statistics-tables">
+                <div class="index-content2">
+                    <h2 class="statistics-titles">Party Loyalty</h2>
+                    <p id="congressman3">Those who consider themselves to be strong partisans, 
+                        strong Democrats and strong Republicans respectively, tend to be the most faithful 
+                        in voting for their party's nominee for office and legislation that backs their 
+                        party's agenda.
+                    </p>
+                </div>
+                <div class="glance">
+                    <h2 class="statistics-titles">Senate at a glance</h2>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Party</th>
+                                <th>N° of Reps</th>
+                                <th>% Voted W/Party</th>
+                            </tr>
+                        </thead>
+                        <tbody id="glance-table">
+                            <tr>
+                                <td>Republicans</td>
+                                <td>{{republicans.length}}</td>
+                                <td>{{(republicansMembs/republicans.length).toFixed(1)}}%</td>
+                            </tr>
+                            <tr>
+                                <td>Democrats</td>
+                                <td>{{democrats.length}}</td>
+                                <td>{{(democratsMembs/democrats.length).toFixed(1)}}%</td>
+                            </tr>
+                            <tr>
+                                <td>Independents</td>
+                                <td>{{independents.length}}</td>
+                                <td>{{(independentsMembs/independents.length).toFixed(1)}}%</td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td>{{republicans.length+democrats.length+independents.length}}</td>
+                                <td>{{((republicansMembs/republicans.length + democratsMembs/democrats.length + independentsMembs/independents.length)/3).toFixed(1)}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="bottomTenLoyal">
+                    <h2 class="statistics-titles">Least Loyal (Bottom 10% of Party)</h2>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>N°. Party Votes</th>
+                                <th>% Party Votes</th>
+                            </tr>
+                        </thead>
+                        <tbody id="least-loyal">
+                            <tr v-for="member in leastLoyal">
+                                <td>{{member.first_name}} {{member.middle_name || ""}} {{member.last_name}}</td>
+                                <td>{{member.total_votes-member.missed_votes}}</td>
+                                <td>{{member.votes_with_party_pct.toFixed(1)}}%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="topTenLoyal">
+                    <h2 class="statistics-titles">Most Loyal (Top 10% of Party)</h2>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>N°. Party Votes</th>
+                                <th>% Party Votes</th>
+                            </tr>
+                        </thead>
+                        <tbody id="most-loyal">
+                            <tr v-for="member in mostLoyal">
+                                <td>{{member.first_name}} {{member.middle_name || ""}} {{member.last_name}}</td>
+                                <td>{{member.total_votes-member.missed_votes}}</td>
+                                <td>{{member.votes_with_party_pct.toFixed(1)}}%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+            <footer id="foot-index">
+                <p>© 2016 TGIF</p>
+                <p id="p-with-border">All Rights Reserved</p>
+            </footer>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script src="./scripts/app.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+        </body>
+</html>

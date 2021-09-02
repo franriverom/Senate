@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
+        rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" 
+        crossorigin="anonymous">
+    <title>Senate Data</title>
+</head>
+<body id="senate">
+    <div class="wrapper">
+        <header class="header-cont">
+            <a class="email" href="mailto:info@tgif.net" target="_blank">✉️info@tgif.net</a>
+        </header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                 Congress 113
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="senate-data.html">Senate</a></li>
+                                <li><a class="dropdown-item" href="house-data.html">House</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                 Attendance
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="attendance-senate.html">Senate</a></li>
+                                <li><a class="dropdown-item" href="attendance-house.html">House</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                 Party Loyalty
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="senate-party-loyalty.html">Senate</a></li>
+                                <li><a class="dropdown-item" href="house-party-loyalty.html">House</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <main>
+            <div id="members-data">
+                <div class="main-info">
+                <h2>Senators</h2>
+                <p id="sen-info">First convened in 1789, the composition and powers of the Senate are established in 
+                    Article One of the U.S. Constitution. Each state is represented by two senators, 
+                    regardless of population, who serve staggered six-year terms. The Senate has several 
+                    exclusive powers not granted to the House, including consenting to treaties as a 
+                    precondition to their ratification and consenting to or confirming appointments of 
+                    Cabinet secretaries, federal judges, other federal executive officials, military officers, 
+                    regulatory officials, ambassadors, and other federal uniformed officers, as well as trial 
+                    of federal officials impeached by the House.
+                </p>
+                </div>
+                <div class="form-check form-switch">
+                <h4>Sort By:</h4>
+                <form>
+                    <fieldset id="filtros">
+                        <legend>Parties:</legend>
+                        <label for="">Republican Party
+                            <input v-model="parties" type="checkbox" name="parties" value="R" class="form-check-input" id="flexSwitchCheckDefault">
+                        </label>
+                        <label for="">Democratic Party
+                            <input v-model="parties" type="checkbox" name="parties" value="D" class="form-check-input" id="flexSwitchCheckDefault">
+                        </label>
+                        <label for="">Independent Party
+                            <input v-model="parties" type="checkbox" name="parties" value="ID" class="form-check-input" id="flexSwitchCheckDefault">
+                        </label>
+                    </fieldset>
+                    <fieldset id="states-legend">
+                        <legend>States:</legend>
+                        <select v-model="selection" name="states">
+                            <option value="">--Please choose a State--</option>
+                            <option v-for="state in membersByState" :value="state">{{state}}</option>
+                        </select>
+                    </fieldset>
+                </form>
+                </div>
+                <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Party</th>
+                        <th>State</th>
+                        <th>Seniority</th>
+                        <th>Percentage of votes with party</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="member in membersByParty">
+                        <td>{{member.first_name}} {{member.middle_name || ""}} {{member.last_name}}</td>
+                        <td>{{member.party}}</td>
+                        <td>{{member.state}}</td>
+                        <td>{{member.seniority}} Years</td>
+                        <td>{{member.votes_with_party_pct}} %</td>
+                    </tr>
+                </tbody id="members-data-tbody">
+                </table>
+            </div>
+        </main>
+        <footer id="foot-index">
+            <p>© 2016 TGIF</p>
+            <p id="p-with-border">All Rights Reserved</p>
+        </footer>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script src="./scripts/app.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    </div>
+</body>
+</html>

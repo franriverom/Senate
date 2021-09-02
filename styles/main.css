@@ -1,0 +1,205 @@
+* {
+    padding: 0;
+    margin: 5px;
+    box-sizing: border-box;
+}
+.wrapper-index {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.header-cont {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    background-image: url("../images/header.jpg");
+    height: 22vh;
+    width: 100%;
+    margin-bottom: 0!important;
+}
+
+.email {
+    font-size: 23px;
+    margin-right: 1vw;
+    color: white!important;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    text-decoration-color: red;
+}
+/*ESTILOS DEL NAV*/
+.navbar {
+    border: 1px solid black;
+    border-radius: 2px;
+    font-size: 20px;
+    color: #005eff!important;
+    margin-top: 0!important;
+    width: 100%;
+}
+.nav-link {
+    color: #005eff!important;
+    margin: 0!important;
+}
+.nav-link:focus{
+    background-color: darkgray!important;
+    color: #000000!important;
+}
+/*CONTENIDO*/
+
+h2{
+    margin-top: 5vh!important;
+}
+
+#sen-info, #hou-info {
+    width: 50%;
+    text-align: justify;
+}
+
+#members-data-tbody {
+    align-items: center;
+    justify-content: center;
+}
+#congressman {
+    width: 50%;
+    text-align: justify;
+}
+#congressman2 {
+    max-width: 50vw;
+    text-align: justify;
+}
+#congressman3 {
+    max-width: 40vw;
+    text-align: justify;
+}
+.index-content2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 45vw;
+    text-align: justify;
+    min-height: 50vh;
+    justify-content: flex-start;
+    margin-left: 7vw;
+}
+.index-content3 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 45vw;
+    text-align: justify;
+    min-height: 50vh;
+    justify-content: flex-start;
+    margin-left: 3vw;
+}
+.glance, .bottomTen, .topTen {
+    max-width: 48%;
+    text-align: center;
+    min-height: 50vh;
+}
+.bottomTen, .topTen{
+    margin-left: 2vw;
+    margin-right: 2vw;
+}
+.bottomTenLoyal, .topTenLoyal, .glance {
+    max-width: 50%;
+    text-align: center;
+    min-height: 50vh;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    margin-left: 7vw;;
+}
+
+.statistics-titles{
+    min-width: 50%;
+    justify-content: center;
+}
+#foot-index {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    border: 1px solid black;
+    border-radius: 2px;
+    background-color:#181c3e;
+    color: white;
+    text-decoration: underline;
+    text-decoration-color: red;
+}
+.index-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1 1 25;
+    flex-wrap: wrap;
+}
+#lupa-icon {
+    width: 400px;
+    height: 400px;
+    margin-right: 10vw;
+}
+.accordion-body {
+    text-align: justify;
+}
+#p-with-border {
+    border-left: 1px solid white;
+    padding-left: 12px;
+}
+
+.accordion-button {
+    text-decoration: underline #005eff;
+    color: #005eff!important;
+    font-size: 20px!important;
+}
+thead, td {
+    text-align: center;
+}
+thead {
+    position: sticky;
+}
+h4{
+    margin-left: 55%;
+    color: #1349a4;
+}
+
+#filtros {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-left: 58%;
+    width: 30%;
+}
+fieldset legend{
+    color: #005eff!important;
+}
+label {
+    color: #000000!important;
+}
+form fieldset {
+    width: 48%;
+  }
+
+#states-legend{
+    width: 12%;
+    margin-left: 73%;
+    position: absolute;
+    margin-top: calc(-26vh + 6px);
+}
+#states-legend2{
+    width: 12%;
+    margin-left: 15%;
+    position: absolute;
+    margin-top: calc(-1vh + 7px);
+}
+
+.statistics-tables {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.glance {
+    border: 1px solid black;
+    border-radius: 2px;
+}
